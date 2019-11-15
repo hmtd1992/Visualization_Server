@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background:linear-gradient(45deg, #49a09d, #5f2c82);;
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+
+/*** Table Styles **/
+
+
+.container{
+    			height:300px;
+    			max-height:300px;
+    			border:3px;
+				width:auto;
+				position: static;
+				overflow-y:scroll;
+			}
+
+.button1
+{
+				position: static;
+}
+
+.table-class {
+  				background: white;
+  				border-radius:3px;
+  				border-collapse: collapse;
+  				height: 320px;
+  				margin: auto;
+  				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  				animation: float 5s infinite;
+}
+
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+
+td {
+  background:#FFFFFF;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+</style>
+</head>
+<body>
+<h1 style="color:white;">Momentenspitzen EDA</h1>
+
+
+<br><br><br>
+
+
+<form action="/" method="post">
+
+<div class="container">
+		<table class="table-class">
+			<thead>
+		<tr>
+	<th class="text-left">Select File</th>
+	<th class="text-left">File Name</th>
+	<th class="text-left">Date</th>
+	<th class="text-left">Size</th>
+	<th class="text-left">Description</th>
+</tr>
+</thead>
+
+			<tbody class="table-hover">
+			{% for  (file_name, date , size, description) in list1 %}
+                 <tr>
+                     <td class="text-left"> <input type="radio" name="file_name" value={{file_name}}></td>
+                     <td class="text-left"> {{file_name}}</td>
+                     <td class="text-left"> {{date}}</td>
+					 <td class="text-left"> {{size}} GB </td>
+                     <td class="text-left"> {{description}}</td>
+                </tr>
+            {% endfor %}
+</tbody>
+
+		</table>
+
+</div>
+
+<br>
+
+<div class="button1" align="center">
+
+		<button class="button" type="submit">Show EDA</button>
+</div>
+
+</form>>
+
+<br><br>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+
+<div class="chart_space" id="bargraph" align="center">
+    <script>
+        var graphs = {{plot | safe}};
+        Plotly.plot('bargraph',graphs,{});
+    </script>
+</div>
+
+</body>
+</html>
+
+
+
+</body>
+</html>
+
